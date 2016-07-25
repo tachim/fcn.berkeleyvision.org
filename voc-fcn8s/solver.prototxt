@@ -1,5 +1,5 @@
-train_net: "train.prototxt"
-test_net: "val.prototxt"
+train_net: "laneseg_train.prototxt"
+test_net: "laneseg_val.prototxt"
 test_iter: 736
 # make test net, but don't invoke it from the solver itself
 test_interval: 999999999
@@ -8,6 +8,7 @@ average_loss: 20
 lr_policy: "fixed"
 # lr for unnormalized softmax
 base_lr: 1e-14
+#base_lr: 1e3
 # high momentum
 momentum: 0.99
 # no gradient accumulation
