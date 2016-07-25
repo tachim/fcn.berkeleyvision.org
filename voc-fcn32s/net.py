@@ -17,7 +17,7 @@ def fcn(split):
     n = caffe.NetSpec()
     pydata_params = dict(split=split, mean=(104.00699, 116.66877, 122.67892),
             seed=1337)
-    pydata_params['data_path'] = './laneseg_small_train.h5'
+    pydata_params['data_path'] = './laneseg_train_10.h5'
     pylayer = 'VOCSegDataLayer'
     n.data, n.label = L.Python(module='voc_layers', layer=pylayer,
             ntop=2, param_str=str(pydata_params))
@@ -67,10 +67,10 @@ def fcn(split):
     return n.to_proto()
 
 def make_net():
-    with open('laneseg_train.prototxt', 'w') as f:
+    with open('laneseg_train_10.prototxt', 'w') as f:
         f.write(str(fcn('train')))
 
-    with open('laneseg_val.prototxt', 'w') as f:
+    with open('laneseg_val_10.prototxt', 'w') as f:
         f.write(str(fcn('seg11valid')))
 
 if __name__ == '__main__':
